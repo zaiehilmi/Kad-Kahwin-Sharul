@@ -30,6 +30,35 @@ document.getElementById("toggle-content").addEventListener("click", function () 
     audioPlayer.play();  // Start playing the audio
 });
 
+const musicPlayer = {
+    audio: document.getElementById("audio-player"),
+
+    fadeAudio(targetVolume, duration = 500) {
+        const start = this.audio.volume;
+        const step = (targetVolume - start) / (duration / 50);
+
+        const fade = setInterval(() => {
+            let newVolume = this.audio.volume + step;
+            if ((step > 0 && newVolume >= targetVolume) ||
+                (step < 0 && newVolume <= targetVolume)) {
+                this.audio.volume = targetVolume;
+                clearInterval(fade);
+            } else {
+                this.audio.volume = newVolume;
+            }
+        }, 50);
+    }
+}
+
+document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+        musicPlayer.fadeAudio(0);
+        setTimeout(() => musicPlayer.audio.pause(), 500);
+    } else {
+        musicPlayer.audio.play();
+        musicPlayer.fadeAudio(1);
+    }
+});
 
 /** =====================================================
  *  Timer Countdown
