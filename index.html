@@ -6,6 +6,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <!-- Css Vendor -->
     <link href="./css/style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
     <title>Sharul dan Qamarina</title>
@@ -227,11 +228,10 @@
 
     <section class="footer">
         <ul class="menu">
-            <li id="calendar-btn"><i class='bx bx-calendar'></i></li>
-            <li id="location-btn"><i class='bx bx-map'></i></li>
-            <li id="music-btn"><i class='bx bx-music'></i></li>
-            <li id="rsvp-btn"><i class='bx bx-envelope'></i></li>
-            <li id="contact-btn"><i class='bx bx-phone'></i></li>
+            <li id="calendar-btn"><i class='bi bi-calendar2-heart-fill' style="color: white; font-size: 20px;"></i></li>
+            <li id="location-btn"><i class='bi bi-geo-alt-fill' style="color: white; font-size: 20px;"></i></li>
+            <li id="music-btn"><i class='bi bi-file-music-fill' style="color: white; font-size: 20px;"></i></li>
+            <li id="contact-btn"><i class='bi bi-telephone-fill' style="color: white; font-size: 20px;"></i></li>
         </ul>
     </section>
 </div>
@@ -239,16 +239,16 @@
 <!-- Bottom Modal -->
 <div class="toggle-menu" id="calendar-menu">
     <div class="calendar">
-        <h1>Calendar</h1>
+        <h1>Kalendar</h1>
         <p>
-            <span>31 December 9999</span>
+            <span>23 Mac 2026</span>
             <span>|</span>
-            <span>30 Zulhijjah 9999H</span>
+            <span>3 Syawal 1447H</span>
         </p>
         <div class="button">
             <button class="google" onclick="addGoogleCalendar()">
                 <i class='bx bxl-google'></i>
-                <span>Add to Calendar</span>
+                <span>Tambah ke Kalendar</span>
             </button>
             <button class="apple" onclick="addAppleCalendar()">
                 <i class='bx bxl-apple'></i>
@@ -286,22 +286,6 @@
             <source src="./music/Beautiful in White x Canon in D (Piano Cover by Riyandi Kusuma).mp3"
                     type="audio/mp3">
         </audio>
-    </div>
-</div>
-
-<div class="toggle-menu" id="rsvp-menu">
-    <div class="rsvp">
-        <h1>Kehadiran</h1>
-        <div class="button">
-            <button id="btn-hadir" type="button">
-                <i class='bx bx-check'></i>
-                <span>Hadir</span>
-            </button>
-            <button id="btn-tidak-hadir" type="button">
-                <i class='bx bx-x'></i>
-                <span>Tidak Hadir</span>
-            </button>
-        </div>
     </div>
 </div>
 

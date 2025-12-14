@@ -92,34 +92,33 @@ setupCountdown(".campaign-0", new Date().getMilliseconds(), 1774195200000);
 /** =====================================================
  *  Add to Calendar
  ======================================================= */
-const event = {
-    title: "Jemputan Kenduri Kahwin John & Sarah",
-    startDate: "99991231T033000Z", // YYYYMMDDTHHmmssZ (UTC)
-    endDate: "99991231T090000Z",
-    location: "10A Jalan Seri Ampang 2, Kampung Pisang, 47300 Subang, Selangor, Malaysia",
-    description: "Kami menjemput tuan/puan hadir ke majlis perkahwinan anakanda kami.",
-};
+const generateEventFor = {
+    info: {
+        title: "Jemputan Kenduri Kahwin Sharul & Qamarina",
+        startDate: "20260323T040000Z", // YYYYMMDDTHHmmssZ (UTC)
+        endDate: "20260323T090000Z",
+        location: "No 2002A Jalan Stesen Kampung Berangan, 16200 Tumpat, Kelantan",
+        description: "Kami menjemput tuan/puan hadir ke majlis perkahwinan anakanda kami.",
+    },
 
-// Function to generate Google Calendar URL
-function generateGoogleCalendarLink(event) {
-    const {title, startDate, endDate, location, description} = event;
+    googleCalendar() {
+        const {title, startDate, endDate, location, description} = this.info;
 
-    const baseUrl = "https://calendar.google.com/calendar/render?action=TEMPLATE";
-    const params = new URLSearchParams({
-        text: title,
-        dates: `${startDate}/${endDate}`,
-        details: description,
-        location: location,
-    });
+        const baseUrl = "https://calendar.google.com/calendar/render?action=TEMPLATE";
+        const params = new URLSearchParams({
+            text: title,
+            dates: `${startDate}/${endDate}`,
+            details: description,
+            location: location,
+        });
 
-    return `${baseUrl}&${params.toString()}`;
-}
+        return `${baseUrl}&${params.toString()}`;
+    },
 
-// Function to generate ICS file content
-function generateICS(event) {
-    const {title, startDate, endDate, location, description} = event;
+    ics() {
+        const {title, startDate, endDate, location, description} = this.info;
 
-    return `
+        return `
         BEGIN:VCALENDAR
         VERSION:2.0
         BEGIN:VEVENT
@@ -131,6 +130,7 @@ function generateICS(event) {
         END:VEVENT
         END:VCALENDAR
     `.trim();
+    }
 }
 
 // Function to download an ICS file
@@ -146,14 +146,13 @@ function downloadICS(filename, content) {
 
 // Handler for Google Calendar button
 function addGoogleCalendar() {
-    const googleLink = generateGoogleCalendarLink(event);
-    window.open(googleLink, "_blank");
+    window.open(generateEventFor.googleCalendar(), "_blank");
 }
 
 // Handler for Apple Calendar button
 function addAppleCalendar() {
-    const icsContent = generateICS(event);
-    downloadICS("event.ics", icsContent);
+    const icsContent = generateEventFor.ics();
+    downloadICS("sharulKahwin.ics", icsContent);
 }
 
 
@@ -269,12 +268,7 @@ const toggleButtons = {
     'calendar-btn': 'calendar-menu',
     'location-btn': 'location-menu',
     'music-btn': 'music-menu',
-    'rsvp-btn': 'rsvp-menu',
-    'ucapan-btn': 'ucapan-menu',
     'contact-btn': 'contact-menu',
-    'kehadiran-btn': 'rsvp-menu',
-    'btn-hadir': 'success-menu'
-    // Add other button-to-menu mappings here
 };
 
 // Function to toggle a menu open/close
