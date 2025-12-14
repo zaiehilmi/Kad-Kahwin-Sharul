@@ -12,8 +12,8 @@
 // });
 
 document.getElementById("toggle-content").addEventListener("click", function () {
-    var wrapper = document.querySelector(".wrapper"); // Change to wrapper
-    var card = document.querySelector(".card");
+    const wrapper = document.querySelector(".wrapper"); // Change to wrapper
+    const card = document.querySelector(".card");
 
     // Add the 'hidden' class to start the fade out transition
     wrapper.classList.add("hidden");
@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 });
 
-setupCountdown(".campaign-0", new Date().getMilliseconds(), 1924920000000);
+setupCountdown(".campaign-0", new Date().getMilliseconds(), 1774195200000);
 
 
 /** =====================================================
@@ -160,23 +160,22 @@ function addAppleCalendar() {
 /** =====================================================
  *  Location for Google and Waze
  ======================================================= */
-function openGoogleMaps() {
-    const latitude = 3.1575;  // Example latitude
-    const longitude = 101.7116;  // Example longitude
-    const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}&travelmode=driving`;
+const navigateVia = {
+    latitude: 6.168998,
+    longitude: 102.193855,
 
-    window.open(googleMapsUrl, "_blank");  // Open in a new tab
+    googleMaps() {
+        const googleMapsUrl1 = `https://maps.app.goo.gl/JXKCcHCkyfqqoHtm7`;
+        const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${this.latitude},${this.longitude}&travelmode=driving`;
+        window.open(googleMapsUrl, "_blank");  // Open in a new tab
+    },
+
+    waze() {
+        const wazeUrl = `waze://?ll=${this.latitude},${this.longitude}&navigate=yes`
+
+        window.open(wazeUrl, "_blank");  // Open in a new tab
+    }
 }
-
-function openWaze() {
-    const latitude = 3.1575;  // Example latitude
-    const longitude = 101.7116;  // Example longitude
-    //const wazeUrl = `https://waze.com/ul?ll=${latitude},${longitude}&navigate=yes`;
-    const wazeUrl = `waze://?ll=${latitude},${longitude}&navigate=yes`
-
-    window.open(wazeUrl, "_blank");  // Open in a new tab
-}
-
 
 /** =====================================================
  Contact

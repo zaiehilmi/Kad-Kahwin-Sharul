@@ -293,12 +293,12 @@ if (mysqli_num_rows($query2) == 0) {
             <p>10A Jalan Seri Ampang 2</p>
             <p>Kampung Pisang</p>
             <p>47300 Subang, Selangor</p>
-            <div class="button" onclick="openGoogleMaps()">
+            <div class="button" onclick="navigateVia.googleMaps()">
                 <button class="google">
                     <i class='bx bxl-google'></i>
                     <span>Maps</span>
                 </button>
-                <button class="waze" onclick="openWaze()">
+                <button class="waze" onclick="navigateVia.waze()">
                     <i class="fa-brands fa-waze"></i>
                     <span>Waze</span>
                 </button>
